@@ -2,33 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import StandardScaler
-
-# Load dataset
-df = pd.read_csv("housing_price.csv")
-
-# Select relevant features and target variable
-features = ["housing_median_age", "total_rooms", "total_bedrooms", "population", "households", "median_income"]
-target = "median_house_value"
-
-X = df[features]
-y = df[target]
-
-# Handle missing values (if any)
-X.fillna(X.mean())
-
-# Standardize the features
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-# Train-Test Split
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=10)
-
-# Train the model
-model = LinearRegression()
-model.fit(X_train, y_train)
 
 # Save the model and scaler
 
