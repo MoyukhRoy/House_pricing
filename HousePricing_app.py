@@ -5,9 +5,10 @@ import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
+import os
+file_path = os.path.join(os.getcwd(), "housing_price.csv")
+df = pd.read_csv(file_path)
 
-# Load dataset
-df = pd.read_csv("housing_price.csv")
 
 # Select relevant features and target variable
 features = ["housing_median_age", "total_rooms", "total_bedrooms", "population", "households", "median_income"]
