@@ -8,6 +8,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 
 # Load dataset
+df = pd.read_csv("housing_price.csv")
 
 # Select relevant features and target variable
 features = ["housing_median_age", "total_rooms", "total_bedrooms", "population", "households", "median_income"]
