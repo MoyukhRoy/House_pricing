@@ -44,4 +44,6 @@ if not filtered_df.empty:
     })
     st.table(filtered_df_display)
 else:
+    estimated_price = df['median_house_value'].mean()
     st.warning("No exact match found in the dataset. Try adjusting the values.")
+    st.write(f"### Estimated House Price: ${int(estimated_price)}")
