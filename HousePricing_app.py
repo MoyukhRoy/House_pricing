@@ -15,8 +15,8 @@ with col2:
     total_bedrooms = st.number_input("Total Bedrooms", min_value=1, max_value=10000, value=5)
     population = st.number_input("Population", min_value=1, max_value=50000, value=14)
 with col3:
-    households = st.number_input("Households", min_value=1, max_value=10000, value=1000)
-    median_income = st.number_input("Median Income", min_value=0.1, max_value=50000000.0, value=500000.0)
+    households = st.number_input("Households", min_value=1, max_value=10000, value=10000)
+    median_income = st.number_input("Median Income", min_value=0.1, max_value=50000000.0, value=50000.0)
 
 if st.button("Predicted House Price"):
     avg_price_per_room = df["median_house_value"].mean() / df["total_rooms"].mean()
