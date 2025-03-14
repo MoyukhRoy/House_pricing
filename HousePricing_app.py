@@ -20,14 +20,28 @@ with col3:
     households = st.number_input("Households", min_value=1, max_value=10000, value=1000)
     median_income = st.number_input("Median Income", min_value=0.1, max_value=20.0, value=5.0)
 
-# Hardcoded estimation logic
-estimated_price = (
-    (housing_median_age * 1000) +
-    (total_rooms * 0.5) +
-    (total_bedrooms * 2) +
-    (population * 0.3) +
-    (households * 5) +
-    (median_income * 10000)
-)
+# Button to trigger prediction
+if st.button("Predict"):
+    # Simple rule-based estimation using dataset statistics
+    avg_price_per_room = df["median_house_value"].mean() / df["total_rooms"].mean()
+    avg_price_per_bedroom = df["median_house_value"].mean() / df["total_bedrooms"].mean()
+    avg_price_per_population = df["median_house_value"].mean() / df["population"].mean()
+    avg_price_per_household = df["median_house_value"].mean() / df["households"].mean()
+    avg_income_impact = df["median_house_value"].mean() / df["median_income"].mean()
 
-st.write(f"### Estimated House Price: ${int(estimated_price)}")
+    estimated_price = (
+        (total_rooms * avg_price_per_room) +
+        (total_bedrooms * avg_price_per_bedroom) +
+        (population * avg_price_per_population) +
+        (households * avg_price_per_household) +
+        (median_income * avg_income_impact)
+    )
+    
+    st.write(f"### Estimated House Price: ${int(estimated_price)}")
+    
+    # Display input values in a table
+    input_data = pd.DataFrame({
+        "Feature": ["Housing Median Age", "Total Rooms", "Total Bedrooms", "Population", "Households", "Median Income"],
+        "Input Value": [housing_median_age, total_rooms, total_bedrooms, population, households, median_income]
+    })
+    st.table(input_data)
