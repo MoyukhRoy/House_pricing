@@ -4,7 +4,7 @@ import numpy as np
 
 df = pd.read_csv("housing_price.csv")
 
-st.title("🏠 House Price Lookup App")
+st.title("🏠 House Price Calculator")
 st.write("Enter details below to get an estimated house price:")
 
 col1, col2, col3 = st.columns(3)
