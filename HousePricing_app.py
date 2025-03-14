@@ -4,7 +4,7 @@ import pickle
 import pandas as pd
 
 # Load trained model and scaler
-with open("model.pkl", "rb") as f:
+with open("with open("/mount/src/house_pricing_-regression/model.pkl", "rb") as f:", "rb") as f:
     model = pickle.load(f)
 
 # Streamlit App
