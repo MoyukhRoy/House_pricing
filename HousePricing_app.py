@@ -5,7 +5,7 @@ import pandas as pd
 
 # Load trained model and scaler
 with open("model.pkl", "rb") as f:
-    scaler, model = pickle.load(f)
+    model = pickle.load(f)
 
 # Streamlit App
 st.title("🏠 House Price Prediction App")
